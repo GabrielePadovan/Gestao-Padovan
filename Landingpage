@@ -1,0 +1,119 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle, PhoneCall } from "lucide-react";
+import { motion } from "framer-motion";
+
+export default function LandingPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white relative">
+      {/* Hero Section */}
+      <section className="text-center py-20 px-6 max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          Transforme Cliques em Clientes
+        </h1>
+        <p className="text-lg md:text-xl mb-8">
+          Gestão Profissional de Tráfego Pago e Conteúdo Estratégico para o seu Negócio
+        </p>
+        <Button size="lg" className="bg-green-500 hover:bg-green-600">
+          Agendar Diagnóstico Gratuito
+        </Button>
+      </section>
+
+      {/* Serviços Oferecidos */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 py-12 max-w-5xl mx-auto">
+        {[
+          {
+            title: "Gestão de Tráfego Pago",
+            desc: "Campanhas no Meta Ads, Google Ads e TikTok Ads, com otimizações constantes.",
+          },
+          {
+            title: "7 Fases de Consciência do Cliente",
+            desc: "A mensagem certa, para a pessoa certa, no momento certo.",
+          },
+          {
+            title: "Diagnóstico Personalizado",
+            desc: "Análise estratégica do seu negócio antes de qualquer execução.",
+          },
+          {
+            title: "Gestão de Redes Sociais",
+            desc: "Conteúdo orgânico que fideliza e constrói autoridade.",
+          },
+        ].map((service, idx) => (
+          <Card key={idx} className="bg-gray-900 border-gray-700">
+            <CardContent className="p-6">
+              <h3 className="text-2xl font-semibold mb-2">{service.title}</h3>
+              <p className="text-gray-300">{service.desc}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+
+      {/* Como Funciona */}
+      <section className="py-16 px-6 bg-gray-950">
+        <h2 className="text-3xl font-bold text-center mb-10">Como Funciona?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {[
+            "Diagnóstico Profundo do Seu Negócio",
+            "Planejamento das Campanhas e Conteúdo",
+            "Execução Estratégica e Otimizações",
+            "Relatórios e Reuniões de Performance",
+          ].map((step, idx) => (
+            <Card key={idx} className="bg-gray-900 border-gray-700 text-center">
+              <CardContent className="p-6">
+                <div className="text-green-500 mb-3">
+                  <CheckCircle size={32} />
+                </div>
+                <p>{step}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA Final com Calendly Embed */}
+      <section className="text-center py-20 px-6">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          Pronto para ter campanhas que realmente geram vendas?
+        </h2>
+        <motion.div whileHover={{ scale: 1.05 }}>
+          <Button size="lg" className="bg-green-500 hover:bg-green-600" onClick={() => {
+            document.getElementById('calendly-embed').scrollIntoView({ behavior: 'smooth' });
+          }}>
+            Agendar Reunião Gratuita
+          </Button>
+        </motion.div>
+        <p className="mt-4 text-sm text-gray-400">Vagas limitadas para gestão personalizada.</p>
+      </section>
+
+      {/* Calendly Embed Section */}
+      <section id="calendly-embed" className="py-20 px-6 max-w-4xl mx-auto">
+        <div className="aspect-w-16 aspect-h-9">
+          <iframe
+            src="https://calendly.com/gestaopadovan/diagnostico"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            title="Agendar Diagnóstico"
+            className="rounded-2xl shadow-lg"
+          ></iframe>
+        </div>
+      </section>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/351925879029"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50"
+      >
+        <PhoneCall size={28} />
+      </a>
+
+      {/* Footer */}
+      <footer className="py-10 text-center text-gray-500 text-sm">
+        <p>Gabriele Padovan &copy; {new Date().getFullYear()} - Todos os direitos reservados.</p>
+        <p>Contato: grupoinkoop@gmail.com | WhatsApp: (351) 925879029</p>
+      </footer>
+    </div>
+  );
+}
